@@ -6,6 +6,7 @@ if [ -f /etc/bashrc ]; then
 fi
 
 alias zk0='$KAFKA_HOME/bin/zookeeper-server-start.sh $KAFKA_HOME/config/zookeeper0.properties'
+alias zk1='$KAFKA_HOME/bin/zookeeper-server-start.sh $KAFKA_HOME/config/zookeeper1.properties'
 alias kk0='$KAFKA_HOME/bin/kafka-server-start.sh $KAFKA_HOME/config/server0.properties'
 alias kk1='$KAFKA_HOME/bin/kafka-server-start.sh $KAFKA_HOME/config/server1.properties'
 alias kk2='$KAFKA_HOME/bin/kafka-server-start.sh $KAFKA_HOME/config/server2.properties'
@@ -17,10 +18,15 @@ alias kk7='$KAFKA_HOME/bin/kafka-server-start.sh $KAFKA_HOME/config/server7.prop
 alias kk8='$KAFKA_HOME/bin/kafka-server-start.sh $KAFKA_HOME/config/server8.properties'
 alias kk9='$KAFKA_HOME/bin/kafka-server-start.sh $KAFKA_HOME/config/server9.properties'
 alias kkstop='$KAFKA_HOME/bin/kafka-server-stop.sh'
+alias kklist='$KAFKA_HOME/bin/kafka-topics.sh --list --bootstrap-server'
+alias kktopic='$KAFKA_HOME/bin/kafka-topics.sh --create --bootstrap-server'
 alias kkprod='$KAFKA_HOME/bin/kafka-console-producer.sh --broker-list'
 alias kkcosm='$KAFKA_HOME/bin/kafka-console-consumer.sh --bootstrap-server'
 alias zkstop='$KAFKA_HOME/bin/zookeeper-server-stop.sh'
 alias nifi='$NIFI_HOME/bin/nifi.sh'
+alias kkrm='$KAFKA_HOME/bin/kafka-topics.sh --zookeeper localhost:2181 --delete --topic'
+alias kkdes='$KAFKA_HOME/bin/kafka-topics.sh --describe --bootstrap-server'
+
 # Uncomment the following line if you don't like systemctl's auto-paging feature:
 # export SYSTEMD_PAGER=
 export KAFKA_HOME='/home/kienpham/kafka'

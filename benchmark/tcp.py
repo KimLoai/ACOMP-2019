@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
-import time
 import socket
-import datetime
 import os
+import sys
+import time
+import multiprocessing
 
 # Send Message
 def sendTCP(host, port, num, data):
@@ -11,42 +12,30 @@ def sendTCP(host, port, num, data):
     # Connect to server and send data
         sock.connect((host, port))
         # Send NUM_MESS message
-        for i in range(num) : 
+        for _ in range(num) : 
             sock.sendall(data)
 
-# Writing log
-def writingLog(startTime, execTime, message):
-    # Create log dictionary
-    if (not os.path.exists("log/")):
-        os.mkdir("log/")
-    # Log file    
-    today = datetime.date.today()
-    currDate = today.strftime("%d-%m-%Y")
-    path = "log/" + "tcp" + currDate + ".log"
-    outputFile = open(path, 'a+')
-    
-    # Write log
-    outputFile.write("%s\t%13d\t%15.6f\n" %(startTime, message, execTime))
-
-###################### CONSTANTS ########################
-
 # IP address and Port
-HOST, PORT = "10.28.8.86", 19091
+HOST, PORT = "10.28.8.70", 19091
 
 # Send text data
-data = bytes('a', "utf-8")
+numbyte = int(sys.argv[2])
+data = bytes('A'*numbyte + '\n', "utf-8")
 
-# Num message
-num_message = [1000*(2**i) for i in range(7)]
+# Number of message
+NUM = int(sys.argv[1])
 
-####################### MAIN ###########################
+# Multi Process
+# lstProc  = []
+# NUM_PROC = 8
 
-num_message = [1000*(2**i) for i in range(7)]
+# for i in range(NUM_PROC) :
+#     lstProc.append(multiprocessing.Process(target=sendTCP, args=(HOST, PORT, NUM//NUM_PROC, data)))
 
-for message in num_message:
-    start = time.time()
-    startTime = datetime.datetime.now().time()
-    sendTCP(HOST, PORT, message, data)
-    end = time.time()
-    execTime = end - start
-    writingLog(startTime, execTime, message)
+# for i in range(NUM_PROC) :
+#     lstProc[i].start()
+# for i in range(NUM_PROC) : 
+#     lstProc[i].join()
+
+# Single Process
+sendTCP(HOST, PORT, NUM, data)
