@@ -1,4 +1,5 @@
 import sys
+import multiprocessing
 import paho.mqtt.client as mqtt
 
 # Send Message
@@ -19,5 +20,21 @@ NUM = int(sys.argv[1])
 numbyte = int(sys.argv[2])
 data = bytes('A\n'*numbyte, "utf-8")
 
+# Multiple process
+lstProc  = []
+NUM_PROC = 8
+NUM = NUM//NUM_PROC
+
+for i in range(NUM_PROC) :
+    lstProc.append(multiprocessing.Process(
+        target=sendMQTT, 
+        args=(HOST, PORT, NUM, data, topic))
+    )
+
+for i in range(NUM_PROC) :
+    lstProc[i].start()
+for i in range(NUM_PROC) : 
+    lstProc[i].join()
+
 # Single Process
-sendMQTT(HOST, PORT, NUM, data, topic)
+# sendMQTT(HOST, PORT, NUM, data, topic)

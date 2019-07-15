@@ -31,10 +31,13 @@ data = bytes('A'*numbyte, "utf-8")
 # Multiple process
 lstProc  = []
 NUM_PROC = 8
-NUM = NUM/NUM_PROC
+NUM = NUM//NUM_PROC
 
 for i in range(NUM_PROC) :
-    lstProc.append(multiprocessing.Process(target=sendUDP, args=(HOST, PORT, NUM, data)))
+    lstProc.append(multiprocessing.Process(
+        target=sendUDP, 
+        args=(HOST, PORT, NUM, data))
+    )
 
 for i in range(NUM_PROC) :
     lstProc[i].start()

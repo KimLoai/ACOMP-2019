@@ -13,7 +13,7 @@ def sendTCP(host, port, num, data):
             sock.sendall(data)
 
 # IP address and Port
-HOST, PORT = "10.28.8.%s"%(sys.argv[3]), 19091
+HOST, PORT = "10.28.8.86", 19091
 
 # Number of message
 NUM = int(sys.argv[1])
@@ -29,7 +29,7 @@ data = bytes('A'*numbyte + '\n', "utf-8")
 # Multi Process
 lstProc  = []
 NUM_PROC = 8
-NUM = NUM/NUM_PROC
+NUM = NUM//NUM_PROC
 
 for i in range(NUM_PROC) :
     lstProc.append(multiprocessing.Process(

@@ -9,8 +9,8 @@ BYTE_COUNT=1
 
 # Send Message
 def sendHTTP(url, num, data):
-    for i in range(num) : 
-        response = requests.post(url, data=data)
+    for _ in range(num) : 
+        requests.post(url, data=data)
 
 # Writing log
 def writingLog(startTime, execTime, message):

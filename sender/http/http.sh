@@ -16,5 +16,6 @@ cd wrk; make; sudo cp wrk /usr/local/bin
 
 # How to send data by curl
 curl -X POST --data 'a' 'http://10.28.8.86:19090/httplistener'
+
 # How to install
 sudo apt install curl
