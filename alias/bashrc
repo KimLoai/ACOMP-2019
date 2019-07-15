@@ -6,9 +6,7 @@ if [ -f /etc/bashrc ]; then
 fi
 
 alias zk0='$KAFKA_HOME/bin/zookeeper-server-start.sh $KAFKA_HOME/config/zookeeper0.properties'
-alias zk1='$KAFKA_HOME/bin/zookeeper-server-start.sh $KAFKA_HOME/config/zookeeper1.properties'
-alias kk0='$KAFKA_HOME/bin/kafka-server-start.sh $KAFKA_HOME/config/server0.properties'
-alias kk1='$KAFKA_HOME/bin/kafka-server-start.sh $KAFKA_HOME/config/server1.properties'
+alias kk1='$KAFKA_HOME/bin/kafka-server-benchmark.sh $KAFKA_HOME/config/server1.properties'
 alias kk2='$KAFKA_HOME/bin/kafka-server-start.sh $KAFKA_HOME/config/server2.properties'
 alias kk3='$KAFKA_HOME/bin/kafka-server-start.sh $KAFKA_HOME/config/server3.properties'
 alias kk4='$KAFKA_HOME/bin/kafka-server-start.sh $KAFKA_HOME/config/server4.properties'
@@ -29,7 +27,7 @@ alias kkdes='$KAFKA_HOME/bin/kafka-topics.sh --describe --bootstrap-server'
 
 # Uncomment the following line if you don't like systemctl's auto-paging feature:
 # export SYSTEMD_PAGER=
-export KAFKA_HOME='/home/kienpham/kafka'
-export NIFI_HOME='/home/kienpham/nifi'
+export KAFKA_HOME='~/kafka'
+export NIFI_HOME='~/nifi'
 export JAVA_HOME='/usr/lib/jvm/jre-1.8.0-openjdk'
 # User specific aliases and functions
